@@ -1,52 +1,46 @@
-<template>
 
-      <div class="container">
-        <h1>Catalogue de Produits Cosmétiques 💄</h1>
+     <template>
+  <div>
+    <!-- EN-TÊTE -->
+    <header class="header">
+      <div class="logo-section">
+        <img src="https://via.placeholder.com/50" alt="Logo" class="logo" />
+        <h1>Cosmétique Pro</h1>
+      </div>
+      <nav class="nav-bar">
+        <a href="#">Accueil</a>
+        <a href="#">Produits</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
 
-        <!-- Barre de recherche -->
-        <input
-          type="text"
-          v-model="search"
-          placeholder="Rechercher un produit..."
-          class="search-input"
-        />
+    <!-- CONTENU PRINCIPAL -->
+    <div class="container">
+      <input
+        type="text"
+        v-model="search"
+        placeholder="Rechercher un produit..."
+        class="search-input"
+      />
 
-        <!-- Liste des produits filtrée -->
-        <div class="products">
-          <div
-            class="card"
-            v-for="product in filteredProducts"
-            :key="product.id"
-          >
-            <img :src="product.image" alt="Image du produit" />
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
-            <p><strong>{{ product.price }} €</strong></p>
-            <p>Catégorie : {{ product.category }}</p>
-            <p>Marque : {{ product.brand }}</p>
-          </div>
+      <div class="products">
+        <div
+          class="card"
+          v-for="product in filteredProducts"
+          :key="product.id"
+        >
+          <img :src="product.image" alt="Image du produit" />
+          <h2>{{ product.name }}</h2>
+          <p>{{ product.description }}</p>
+          <p><strong>{{ product.price }} €</strong></p>
+          <p>Catégorie : {{ product.category }}</p>
+          <p>Marque : {{ product.brand }}</p>
         </div>
       </div>
-
-      <!-- 
-      <div class="container">
-        <h1>Bievenue Dans notre site officiel💄</h1>
-        <h1>Catalogue de Produits Cosmétiques 💄</h1>
-        <div class="products">
-          <div class="card" v-for="product in products" :key="product.id">
-            <img :src="product.image" alt="Image du produit" />
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
-            <p><strong>{{ product.price }} €</strong></p>
-            <p>Catégorie : {{ product.category }}</p>
-            <p>Marque : {{ product.brand }}</p>
-          </div>
-        </div>
-      </div>
-      -->
-      
-
+    </div>
+  </div>
 </template>
+
 
 
 
@@ -112,6 +106,40 @@
         border-radius: 8px;
         border: 1px solid #aaa;
        }
+
+       .header {
+          background-color: #007BFF;
+          color: white;
+          padding: 15px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .logo-section {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .logo {
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+        }
+
+        .nav-bar a {
+          color: white;
+          margin-left: 20px;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        .nav-bar a:hover {
+          text-decoration: underline;
+        }
+
 </style>
 
 
