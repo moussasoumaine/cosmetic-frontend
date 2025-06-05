@@ -1,0 +1,95 @@
+<template>
+   <div> 
+     <!-- EN-TÊTE -->
+        <header class="header">
+        <div class="logo-section">
+            <img src="Logo.png" alt="Logo" class="logo" />
+            <h1>Cosmétique Pro</h1>
+        </div>
+        <nav class="nav-bar">
+            <a href="App.vue"> 🏠Accueil</a>
+            <a href="#"> 🛍️Produits</a>
+            <a href="#"> ✉️Contact</a>
+        </nav>
+        </header>
+    </div>
+
+    <!-- CONTENU PRINCIPAL -->
+    <div class="container">
+      <input
+        type="text"
+        v-model="search"
+        placeholder=" 🔍Rechercher un produit..."
+        class="search-input"
+      />
+      <div class="intro"></div>
+    </div>
+</template>
+
+<script>
+    import { products } from './products.js'
+
+      export default {
+        name: 'App',
+        data() {
+          return {
+            products,
+            search: "",
+            selectedCategory: "",
+            selectedBrand: "",
+            minPrice: 0,
+            maxPrice: 50000,
+          }
+        },
+        computed: {
+          categories() {
+            // retourne les catégories uniques
+            return [...new Set(this.products.map(p => p.category))]
+          },
+          brands() {
+            // retourne les marques uniques
+            return [...new Set(this.products.map(p => p.brand))]
+          },
+          filteredProducts() {
+            return this.products.filter(product => {
+              const matchSearch = product.name.toLowerCase().includes(this.search.toLowerCase())
+              const matchCategory = this.selectedCategory === "" || product.category === this.selectedCategory
+              const matchBrand = this.selectedBrand === "" || product.brand === this.selectedBrand
+              const matchPrice = product.price >= this.minPrice && product.price <= this.maxPrice
+
+              return matchSearch && matchCategory && matchBrand && matchPrice
+            })
+          }
+        }
+      }
+</script>
+
+<style>
+        /* L'entete */
+       .header {
+          background-color: #310678;
+          color: white;
+          padding: 15px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          border-radius: 5px;
+        }
+
+        .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+      /* Bare de recherche */
+      .search-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #22057a;
+       }
+</style>

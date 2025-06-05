@@ -3,18 +3,19 @@
     
     
      <template class="template">
-  <div>
-    <!-- EN-TÊTE -->
-    <header class="header">
-      <div class="logo-section">
-        <img src="Logo.png" alt="" class="logo" />
-        <h1>Cosmétique Pro</h1>
-      </div>
-      <nav class="nav-bar">
-        <a href="App.vue"> Accueil</a>
-        <a href=""> Produits</a>
-        <a href="contact.js"> Contact</a>
-      </nav>
+      <div class="main-site-wrapper">
+      <div>
+        <!-- EN-TÊTE -->
+        <header class="header">
+          <div class="logo-section">
+            <img src="Logo.png" alt="" class="logo" />
+            <h1>Cosmétique Pro</h1>
+          </div>
+          <nav class="nav-bar">
+            <a href="App.vue"> Accueil</a>
+            <a href=""> Produits</a>
+            <a href="contact.js"> Contact</a>
+          </nav>
 
       <!-- Partie droite : profil + panier -->
       <div class="header-actions">
@@ -187,6 +188,11 @@
                 <button class="buy-btn">🛒 Acheter maintenant</button>
               </div>
             </div>
+             <!-- Boutton à remonté-->
+            <button class="scroll-top-btn" v-show="showScrollTop" @click="scrollToTop">
+              ⬆ 
+            </button>
+
 
 
               <!-- footer Pied de page -->
@@ -239,7 +245,7 @@
             </div>
           </footer>
 
-
+        </div>
 </template>
 
 
@@ -258,12 +264,13 @@
             selectedCategory: "",
             selectedBrand: "",
             minPrice: 0,
-            maxPrice: 100,
+            maxPrice: 500000,
             sortOrder: "" ,
             autoScroll: null,
             showOverlay: false,
             selectedProduct: null,
             showLogin: false,
+            showScrollTop: false,
             cart: [],
           hoverItem: "",
           categoriesMenu: [
@@ -342,13 +349,21 @@
             } else {
               alert('Email ou mot de passe incorrect');
             }
+          },
+           // ... tes autres méthodes
+          scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          },
+          handleScroll() {
+            this.showScrollTop = window.scrollY > 200;
           }
-
         } ,
+        // Mounted
         mounted() {
           this.autoScroll = setInterval(() => {
             this.scrollRight();
           }, 3000);
+          window.addEventListener('scroll', this.handleScroll)
         }
 
       }
@@ -359,6 +374,19 @@
 
 
 <style>
+      /*dive de templete */
+      .main-site-wrapper {
+          position: relative;
+          z-index: 1;
+          overflow-x: hidden;
+        }
+
+        body, html {
+          overflow-x: hidden;
+          box-sizing: border-box;
+        }
+
+
       /* description */
       .intro {
         background-color: #f0f8ff;
@@ -377,7 +405,7 @@
       .container {
         max-width: 1000px;
         margin: auto;
-        padding: 20px;
+        padding: 40px;
         font-family: Arial, sans-serif;
       }
 
@@ -624,9 +652,10 @@
               
             /* flesh de defiler */
             .products-wrapper {
-              position: relative;
+              position: static;
               overflow: hidden;
               margin-top: 30px;
+              z-index: 1;
             }
 
             .products-grid {
@@ -639,10 +668,14 @@
               scroll-behavior: smooth;
               padding: 10px 40px;
               scrollbar-width: none;
+              z-index: 1;
+              position: static;
             }
 
             .products-grid::-webkit-scrollbar {
               display: none;
+              z-index: 1;
+              position: static;
             }
 
             .scroll-btn {
@@ -807,7 +840,32 @@
               z-index: 20;
             }
 
+            /* Boutton a remonté */
+            .scroll-top-btn {
+              position: center;
+              bottom: 20px;
+              
+              font-size: 20px;
+              background: #e42c0f;
+              color: white;
+              border: none;
+              padding: 20px 30px;
+              border-radius: 50%;
+              cursor: pointer;
+              z-index: 999;
+              box-shadow: 0 0 15px rgba(0,0,0,0.3);
+              border-color: #333;
+            }
 
+            .product-popup,
+            .overlay,
+            .scroll-top-btn {
+              z-index: 10;
+            }
+
+            iframe[src*="tidio"] {
+              z-index: 99999 !important;
+            }
 
 
 </style>

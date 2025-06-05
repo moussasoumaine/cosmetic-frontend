@@ -1,4 +1,5 @@
 
+
 <template>
     <div class="card">
         <img :src="product.image" alt="Image du produit" />
@@ -41,7 +42,7 @@
         height: auto;
         border: 1px solid #6f0e0e;
         border-radius: 8px;
-        padding: 30px;
+        padding: 40px;
         box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         flex-shrink: 0;
         box-sizing: border-box;
