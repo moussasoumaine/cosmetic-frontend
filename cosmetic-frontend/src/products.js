@@ -181,5 +181,187 @@ export const products = [
     category: "Parfums",
     brand: "Eau De Toilette Homme",
     description: "N°5 Eau de Parfum 48h/48h à 100%."
+  },
+  {
+    id: 21,
+    name: "Marcelle",
+    image:require('@/assets/image/Marcelle.jpg'),
+    price: 9000,
+    category: "Soins visage",
+    brand: "L'Oréal",
+    description: " Lotion démaquillante sans huile pour les yeux "
+  },
+  {
+    id: 22,
+    name: "Moussant",
+    image: require('@/assets/image/moussant.jpg'),
+    price: 2500,
+    category: "Nettoyants Visage",
+    brand: "Maybelline",
+    description: "moussant purifiant nettoyant peau grasse."
+    
+  },
+  {
+    id: 23,
+    name: "Centella Cleansing Oil",
+    image:require('@/assets/image/Centella.jpg'),
+    price: 14000,
+    category: " Nettoyants Visage ",
+    brand: "Hydratante",
+    description: "Soin nettoyant, hydratant, démaquillant pour visage"
+    
+  },
+  {
+    id: 24,
+    name: "Cien",
+    image: require('@/assets/image/Cien.jpg'),
+    price: 15500,
+    category: "Créme",
+    brand: "Lotion",
+    description: "Crème visage matifiante,50 ml hydratante + anti-"
+  },
+  {
+    id: 25,
+    name: "Totex Beard Oil",
+    image: require('@/assets/image/Totex.jpg'),
+    price: 13500,
+    category: "Soins Barbe",
+    brand: "Revlon",
+    description: "Crème Hydratante Anti Rides Visage .Homme Effet Matifiante - Soin Anti Age ."
+  },
+  {
+    id: 26,
+    name: "CAMDEN ",
+    image: require('@/assets/image/Camden.jpg'),
+    price: 16500,
+    category: "Soins Barbe",
+    brand: "Balsam",
+    description: "«ORIGINAL» de Camden Barbershop Company fabriqué au Royaume-Uni Pour "
+  },
+  {
+    id: 27,
+    name: "ELIZABETH ARDEN ",
+    image: require('@/assets/image/Arden.jpg'),
+    price: 19000,
+    category: "Déodorant",
+    brand: "Dior",
+    description: "Avenue DéodorantParfumé pour Femme Vaporisateur 150 ml."
+  },
+  {
+    id: 28,
+    name: "Roche Posay",
+    image: require('@/assets/image/Roche.jpg'),
+    price: 15000,
+    category: "Soins Peau",
+    brand: "Revlon",
+    description: "Crème Riche Hydratante, Repulpe &amp."
+  },
+  {
+    id: 29,
+    name: "Bourjois",
+    image: require('@/assets/image/Bourjoi.jpg'),
+    price: 16000,
+    category: "Maquillage",
+    brand: "Beige",
+    description: " Fond de Teint Healthy Mix Serum Foundation for a natural look (54N Beige)."
+  },
+  {
+    id: 30,
+    name: "Viking Revolution ",
+    image: require('@/assets/image/ShampongB.jpg'),
+    price: 8000,
+    category: "Soins Barbe",
+    brand: "Santal",
+    description: "Nettoie en profondeur sans assécher, pour une barbe douce et saine."
+  },
+   {
+    id: 31,
+    name: "Focallure",
+    image: require('@/assets/image/Focallure.jpg'),
+    price: 18500,
+    category: "Poudre",
+    brand: "Garnier",
+    description: "Anti-sueur Maquillage Longue Durée Lâche Poudre Cosmétique"
+  },
+  {
+    id: 32,
+    name: "Kérastase",
+    image: require('@/assets/image/Keras.png'),
+    price: 21000,
+    category: "Parfums",
+    brand: "Marocan",
+    description: "Ultime Routine Huile Capillaire - Concept C."
+  },
+  {
+    id: 33,
+    name: "Lancôme La Vie Est Belle",
+    image:require('@/assets/image/Lancom.jpg'),
+    price: 27000,
+    category: "Parfums",
+    brand: "Marocan",
+    description: " Eau de Parfum rechargeable pour Home & Femme"
+  },
+  {
+    id: 34,
+    name: "L'Homme",
+    image: require('@/assets/image/homme.jpg'),
+    price: 20000,
+    category: "Parfums",
+    brand: "Saint",
+    description: "Parfum  Nouvelle Fraicheur L'Homme Yves Saint Laurent"
+  },
+  {
+    id: 35,
+    name: "Dolce & Gabbana",
+    image: require('@/assets/image/dolce.jpg'),
+    price: 24500,
+    category: "Parfums",
+    brand: "Saint",
+    description: " Light Blue Pour Homme, Eau De Toilette Spray, Fragrance For Men"
+  },
+  {
+    id: 36,
+    name: "Christina Aguilera",
+    image: require('@/assets/image/christin.jpg'),
+    price: 23000,
+    category: "Parfums",
+    brand: "Garnier",
+    description: " By Night, Eau de Parfum Femme Vaporisateur, Senteur Orientale et Fruitée"
+  },
+  {
+    id: 37,
+    name: "Vendôme",
+    image: require('@/assets/image/vendom.jpg'),
+    price: 25500,
+    category: "Parfums",
+    brand: "Dior",
+    description: "Le parfum Place Vendôme de Boucheron."
+  },
+  {
+    id: 38,
+    name: "2-In",
+    image: require('@/assets/image/2in.jpg'),
+    price: 27800,
+    category: "Maquillage",
+    brand: "Garnier",
+    description: "Fond de teint Correcteur 2-en-1 -Cool Porcelain"
+  },
+  {
+    id: 39,
+    name: "CHLOÉ",
+    image: require('@/assets/image/chloe.jpg'),
+    price: 28450,
+    category: "Déodorant",
+    brand: "Garnier",
+    description: " Déodorant Parfumé."
+  },
+  {
+    id: 40,
+    name: "Acide Hyaluronique",
+    image: require('@/assets/image/Acide.jpg'),
+    price: 24500,
+    category: "Parfums",
+    brand: "Eau De Toilette Homme",
+    description: " Pur Soin Visage Hydratant, Repulpant & Lissant"
   }
 ];

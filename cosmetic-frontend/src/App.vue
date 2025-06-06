@@ -501,7 +501,7 @@
         }
 
         .bienfaits h3 {
-          color: #e67e22;
+          color: green;
           margin-bottom: 10px;
           font-size: 30px;
         }
