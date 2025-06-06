@@ -8,8 +8,8 @@
         <!-- EN-TÊTE -->
         <header class="header">
           <div class="logo-section">
-            <img src="Logo.png" alt="" class="logo" />
-            <h1>Cosmétique Pro</h1>
+            <img src="@/Logo.jpg" alt="" class="logo" />
+            <h1>Cosmétique Pro ✨</h1>
           </div>
           <nav class="nav-bar">
             <a href="App.vue"> Accueil</a>
@@ -73,27 +73,37 @@
         </div>
 
       <div class="intro" v-if="!search">
-        <h2>Bienvenue chez <span class="brand-name">Cosmétique Pro</span> 🌟</h2>
-           <p>
-            Chez <strong>Cosmétique Pro</strong>, nous croyons que prendre soin de soi est bien plus qu’un simple geste esthétique : 
-            c’est un art de vivre. Nos produits de soin et nos parfums élégants sont pensés pour révéler votre beauté naturelle, tout en respectant votre santé et votre bien-être.
+        <div class="intro-text">
+          <h2>Bienvenue chez <span class="brand">Cosmétique Pro ✨</span></h2>
+          <p>
+            Chez <strong>Cosmétique Pro</strong>, nous croyons que prendre soin de soi est bien plus qu’un simple geste esthétique :
+            c’est un art de vivre. Nos produits de soin et nos parfums élégants sont pensés pour révéler votre beauté naturelle,
+            tout en respectant votre santé et votre bien-être.
           </p>
           <p>
             Laissez-vous séduire par des soins doux, des formules sûres, et des senteurs inoubliables — parce que vous méritez l’excellence, tous les jours.
           </p>
 
-        <!-- Bienfaits des cosmétiques -->
-        <div class="benefits" v-if="!search">
-          <h2>✨ Bienfaits des cosmétiques</h2>
-          <ul>
-            <li>Hydrate et nourrit la peau en profondeur;</li>
-            <li>Protège contre les agressions extérieures (soleil, pollution...);</li>
-            <li>Améliore l’éclat du teint et réduit les imperfections;</li>
-            <li>Parfume le corps avec des senteurs élégantes et durables;</li>
-            <li>Favorise la confiance en soi et le bien-être au quotidien.</li>
-          </ul>
+          <div class="bienfaits">
+            <h3>✨ Bienfaits des cosmétiques</h3>
+            <ul>
+              <li>Hydrate et nourrit la peau en profondeur</li>
+              <li>Protège contre les agressions extérieures (soleil, pollution...)</li>
+              <li>Améliore l’éclat du teint et réduit les imperfections</li>
+              <li>Parfume le corps avec des senteurs élégantes et durables</li>
+              <li>Favorise la confiance en soi et le bien-être au quotidien</li>
+            </ul>
+          </div>
+          
+        </div>
+
+        <div class="intro-image">
+          <img src="@/assets/image/aceuil3.jpg " alt="Beauté" />
+         
+          
         </div>
       </div>
+
 
       <!-- Filtres -->
         <div class="filters">
@@ -136,6 +146,7 @@
                   :product="product"
                    @voir-fiche="showProduct"
                    @ajouter-au-panier="addToCart"
+                   @payer="openPayment"
                 />
               </div>
 
@@ -171,21 +182,32 @@
                   :product="product"
                    @voir-fiche="showProduct"
                    @ajouter-au-panier="addToCart"
+                   @payer="openPayment"
                 />
               </div>
+              <!-- Bouton retour en haut dans le rideau -->
+              <button class="scroll-top-btn-overlay" @click="scrollOverlayToTop">
+                ⬆
+              </button>
+
             </div>
           </div> <br>
           <!-- Fiche produit (popup) -->
             <div v-if="selectedProduct" class="product-popup">
-              <div class="popup-content">
-                <button class="close-btn" @click="selectedProduct = null">✖</button>
+              <div class="popup-content scrollable">
+                <button class="close-btn" @click="selectedProduct = null"><strong>✖</strong></button>
                 <img :src="selectedProduct.image" alt="Image produit" />
                 <h2>{{ selectedProduct.name }}</h2>
                 <p>{{ selectedProduct.description }}</p>
                 <p><strong>{{ selectedProduct.price }} Fcfa</strong></p>
                 <p>Catégorie : {{ selectedProduct.category }}</p>
                 <p>Marque : {{ selectedProduct.brand }}</p>
-                <button class="buy-btn">🛒 Acheter maintenant</button>
+                <button class="buy-btn" @click="openPayment(selectedProduct)">
+                  <strong>🛒 Acheter maintenant</strong>
+                </button>
+
+                
+
               </div>
             </div>
              <!-- Boutton à remonté-->
@@ -201,8 +223,8 @@
 
             <!-- Colonne 1 : Logo + description -->
             <div class="footer-column">
-              <img src="logo.png" alt="" class="footer-logo" />
-              <h3>Cosmétique Pro 🌟</h3>
+              <img src="@/Logo.jpg" alt="" class="footer-logo" />
+              <h3>Cosmétique Pro ✨</h3>
               <p>
                 " Cosmétique Pro est une plateforme qui vous propose des produits de soin et de parfumerie
                 pour sublimer votre beauté et votre bien-être au quotidien ".
@@ -241,11 +263,38 @@
 
             <!-- Bas de page -->
             <div class="footer-bottom">
-              <p>&copy; 2025 Cosmétique Pro – Tous droits réservés. | <a href="#" class="poli">Politique de confidentialité</a> | <a href="#" class="poli">Conditions d'utilisation</a></p>
+              <p>&copy; 2025 Cosmétique Pro – Tous droits réservés. | <a href="#" class="poli"><strong>Politique de confidentialité</strong></a> | <a href="#" class="poli"><strong>Conditions d'utilisation</strong></a></p>
+               <strong><p>Développé avec ❤️ par Moussa Soumaine Bachar</p></strong>
             </div>
           </footer>
 
         </div>
+
+            <!-- fiche de paiement -->
+        <div v-if="showPaymentForm" class="payment-overlay">
+          <div class="payment-box">
+            <button class="close-btn" @click="showPaymentForm = false">✖</button>
+            <h2>Paiement du produit</h2>
+
+            <p><strong>Produit :</strong> {{ selectedProduct?.name }}</p>
+            <p><strong>Prix :</strong> {{ selectedProduct?.price }} Fcfa</p>
+
+            <form @submit.prevent="confirmPayment">
+              <input type="text" placeholder="Nom complet" required />
+              <input type="email" placeholder="Adresse email" required />
+              <input type="tel" placeholder="Téléphone" required />
+              <select required>
+                <option value="">Méthode de paiement</option>
+                <option>Carte Bancaire</option>
+                <option>Mobile Money</option>
+                <option>PayPal</option>
+              </select>
+
+              <button type="submit" class="buy-btn">💳 <strong>Confirmer l’achat</strong></button>
+            </form>
+          </div>
+        </div>
+
 </template>
 
 
@@ -271,6 +320,9 @@
             selectedProduct: null,
             showLogin: false,
             showScrollTop: false,
+            showPaymentForm: false,
+ // doit déjà existselectedProducter si on l'utilise
+
             cart: [],
           hoverItem: "",
           categoriesMenu: [
@@ -333,7 +385,16 @@
             this.$refs.productContainer.scrollBy({ left: -300, behavior: 'smooth' });
           },
           scrollRight() {
-            this.$refs.productContainer.scrollBy({ left: 300, behavior: 'smooth' });
+            const container = this.$refs.productContainer;
+
+            // S'il est proche de la fin (10px ou moins)
+            if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+              // Revenir au début
+              container.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+              // Sinon, continuer vers la droite
+              container.scrollBy({ left: 300, behavior: 'smooth' });
+            }
           },
           showProduct(product) {
             this.selectedProduct = product;
@@ -356,7 +417,23 @@
           },
           handleScroll() {
             this.showScrollTop = window.scrollY > 200;
+          },
+          scrollOverlayToTop() {
+            const el = document.querySelector('.overlay');
+            if (el) {
+              el.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          },
+          openPayment(product) {
+            this.selectedProduct = product;
+            this.showPaymentForm = true;
+          },
+          confirmPayment() {
+            alert("✅ Paiement confirmé ! Merci pour votre achat.");
+            this.showPaymentForm = false;
           }
+
+
         } ,
         // Mounted
         mounted() {
@@ -384,17 +461,68 @@
         body, html {
           overflow-x: hidden;
           box-sizing: border-box;
+          background-color:rgba(217, 211, 207, 0.1) ;
         }
 
 
       /* description */
-      .intro {
-        background-color: #f0f8ff;
-        padding: 25px;
-        margin: 20px 0;
-        border-radius: 10px;
-        font-family: 'Segoe UI', sans-serif;
-      }
+        .intro {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 40px;
+          padding: 40px 20px;
+          background-image: url('@/assets/image/aceuil.jpg');
+          border-radius: 12px;
+          margin-bottom: 30px;
+        }
+
+        .intro-text {
+          flex: 2;
+          font-size: 20px;
+          color: #333;
+          max-width: 60%;
+        }
+
+        .intro-text h2 {
+          font-size: 30px;
+          margin-bottom: 15px;
+
+        }
+
+        .intro-text .brand {
+          color: #007BFF;
+          font-size: 35px;
+        }
+
+        .bienfaits {
+          margin-top: 30px;
+          font-size: 20px;
+        }
+
+        .bienfaits h3 {
+          color: #e67e22;
+          margin-bottom: 10px;
+          font-size: 30px;
+        }
+
+        .bienfaits ul {
+          padding-left: 20px;
+        }
+
+        .intro-image {
+          flex: 1;
+          text-align: right;
+        }
+
+        .intro-image img {
+          width: 150%;
+          height: 550px;
+          border-radius: 20px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+
 
       .brand-name {
         color: #007BFF;
@@ -405,7 +533,7 @@
       .container {
         max-width: 1000px;
         margin: auto;
-        padding: 40px;
+        padding: 20px;
         font-family: Arial, sans-serif;
       }
 
@@ -541,13 +669,7 @@
           text-decoration: underline;
         }
 
-        /* Bienfaits */
-
-          .benefits h2 {
-            color: #d35400;
-            margin-bottom: 10px;
-          }
-
+         
           /* filtres : Categorie, prix, marque */
           .filters {
             display: flex;
@@ -656,6 +778,7 @@
               overflow: hidden;
               margin-top: 30px;
               z-index: 1;
+              background-color: white;
             }
 
             .products-grid {
@@ -749,7 +872,7 @@
 
 
             .close-btn {
-              position: absolute;
+              position: sticky;
               top: 20px;
               right: 40px;
               background: #007BFF;
@@ -794,10 +917,23 @@
             .popup-content h2 {
               margin-bottom: 10px;
             }
+            .popup-content.scrollable {
+              max-height: 90vh;
+              overflow-y: auto;
+            }
+            .popup-content img {
+              max-width: 100%;
+              border-radius: 10px;
+              margin-bottom: 15px;
+            }
 
             .popup-content .buy-btn {
-              margin-top: 15px;
+              margin-top: 30px;
               background-color: #28a745;
+              border-radius: 5px;
+              padding: 15px;
+              color: #fdfdfd;
+              font-size: 20px;
             }
 
             /* Bare interactive */
@@ -842,7 +978,7 @@
 
             /* Boutton a remonté */
             .scroll-top-btn {
-              position: center;
+              position: sticky;
               bottom: 20px;
               
               font-size: 20px;
@@ -866,6 +1002,61 @@
             iframe[src*="tidio"] {
               z-index: 99999 !important;
             }
+
+            /* Bouton à remonté de rideau */
+            .scroll-top-btn-overlay {
+              position: sticky;
+              bottom: 30px;
+              right: 30px;
+              font-size: 18px;
+              background: #007BFF;
+              color: white;
+              border: none;
+              padding: 15px 20px;
+              border-radius: 50%;
+              cursor: pointer;
+              z-index: 1001;
+              box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            }
+            /* Fiche de paiement */
+            .payment-overlay {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0,0,0,0.7);
+              z-index: 1002;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .payment-box {
+              background-image: url('@/assets/image/aceuil2.webp');
+              padding: 40px;
+              border-radius: 10px;
+              width: 100%;
+              max-width: 400px;
+              text-align: center;
+              position: relative;
+            }
+
+            .payment-box form input,
+            .payment-box form select {
+              width: 100%;
+              padding: 10px;
+              margin: 10px 0;
+            }
+
+            .payment-box button {
+              margin-top: 15px;
+              padding: 10px;
+              border-radius: 8px;
+              background-color: ;
+            }
+
+
 
 
 </style>

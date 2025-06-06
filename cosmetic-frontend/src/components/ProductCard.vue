@@ -10,11 +10,12 @@
         <p>Marque : {{ product.brand }}</p>
 
         <button class="buy-btn" @click="$emit('voir-fiche', product)">
-        🛒 Acheter
+        <strong>🛒 Acheter</strong>
         </button> <br>
         <button class="buy-btn" @click="$emit('ajouter-au-panier', product)">
-        🛍️ Ajouter au panier
+        <strong>🛍️ Ajouter au panier</strong>
         </button>
+        
 
 
    </div>
