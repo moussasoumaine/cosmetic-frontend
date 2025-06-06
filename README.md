@@ -26,11 +26,11 @@
 
 # Technologies utilisées
  
- Vue.js 
- HTML5 / CSS
- JavaScript (ES6)
- Tidio Chatbot (IA assistant)
- Git + GitHub
+- Vue.js 
+- HTML5 / CSS
+- JavaScript (ES6)
+- Tidio Chatbot (IA assistant)
+- Git + GitHub
  
  # Installation locale
  1. Cloner le projet :
@@ -45,22 +45,22 @@
 
 # Structure du projet
 
- cosmetic-frontend/
- ├── public/
- ├── src/
- │   ├── assets/
- │   │   └── images/
- │   ├── components/
- │   │   └── ProductCard.vue
- │   ├── products.js
- │   ├── App.vue
- │   └── main.js
- └── README.md
+* cosmetic-frontend/
+* ├── public/
+* ├── src/
+* │   ├── assets/
+* │   │   └── images/
+* │   ├── components/
+* │   │   └── ProductCard.vue
+* │   ├── products.js
+* │   ├── App.vue
+* │   └── main.js
+* └── README.md
 
 # Auteur
 
-Nom : MOUSSA SOUMAINE Bachar
-Rôle : Développeur Frontend
-Email : 
-moussasoumaineb@gmail.com
-Projet réalisé dans le cadre de : Mini Projet Independant - Recrutement Stagiaire
+- Nom : MOUSSA SOUMAINE Bachar
+- Rôle : Développeur Frontend
+- Email : 
+- moussasoumaineb@gmail.com
+- Projet réalisé dans le cadre de : Mini Projet Independant - Recrutement Stagiaire
