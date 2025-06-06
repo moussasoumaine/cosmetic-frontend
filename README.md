@@ -61,6 +61,5 @@
 
 - Nom : MOUSSA SOUMAINE Bachar
 - Rôle : Développeur Frontend
-- Email : 
-- moussasoumaineb@gmail.com
+- Email : moussasoumaineb@gmail.com
 - Projet réalisé dans le cadre de : Mini Projet Independant - Recrutement Stagiaire
